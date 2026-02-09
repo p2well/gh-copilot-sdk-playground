@@ -17,16 +17,27 @@ func main() {
 	}
 	defer client.Stop()
 
-	session, err := client.CreateSession(ctx, &copilot.SessionConfig{Model: "gpt-4.1"})
+	session, err := client.CreateSession(ctx, &copilot.SessionConfig{
+		Model:     "gpt-4.1",
+		Streaming: true,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	response, err := session.SendAndWait(ctx, copilot.MessageOptions{Prompt: "What is 2 + 2?"})
+	// Listen for response chunks
+	session.On(func(event copilot.SessionEvent) {
+		if event.Type == "assistant.message_delta" {
+			fmt.Print(*event.Data.DeltaContent)
+		}
+		if event.Type == "session.idle" {
+			fmt.Println()
+		}
+	})
+
+	_, err = session.SendAndWait(ctx, copilot.MessageOptions{Prompt: "Tell me a short joke"})
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println(*response.Data.Content)
 	os.Exit(0)
 }
