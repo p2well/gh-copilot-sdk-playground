@@ -6,7 +6,6 @@ A collection of example applications demonstrating the [GitHub Copilot SDK for G
 
 - Go 1.26.5 or higher
 - GitHub Copilot subscription
-- Visual Studio Code with GitHub Copilot extension
 
 ## 🚀 Getting Started
 
