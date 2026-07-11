@@ -48,7 +48,7 @@ func main() {
 
 	session, err := client.CreateSession(ctx, &copilot.SessionConfig{
 		Model:     "gpt-4.1",
-		Streaming: true,
+		Streaming: copilot.Bool(true),
 		Tools:     []copilot.Tool{getWeather},
 	})
 	if err != nil {
@@ -56,12 +56,10 @@ func main() {
 	}
 
 	session.On(func(event copilot.SessionEvent) {
-		if event.Type == "assistant.message_delta" {
-			if event.Data.DeltaContent != nil {
-				fmt.Print(*event.Data.DeltaContent)
-			}
-		}
-		if event.Type == "session.idle" {
+		switch d := event.Data.(type) {
+		case *copilot.AssistantMessageDeltaData:
+			fmt.Print(d.DeltaContent)
+		case *copilot.SessionIdleData:
 			fmt.Println()
 		}
 	})

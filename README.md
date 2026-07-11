@@ -4,7 +4,7 @@ A collection of example applications demonstrating the [GitHub Copilot SDK for G
 
 ## 📋 Prerequisites
 
-- Go 1.25.6 or higher
+- Go 1.26.5 or higher
 - GitHub Copilot subscription
 - Visual Studio Code with GitHub Copilot extension
 
