@@ -11,8 +11,8 @@ A collection of example applications demonstrating the [GitHub Copilot SDK for G
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/p2well/gh-copilot-sdk-playground.git
-   cd gh-copilot-sdk-playground
+   git clone https://github.com/p2well/gh-copilot-sdk-playground-go.git
+   cd gh-copilot-sdk-playground-go
    ```
 
 2. Install dependencies:
@@ -60,7 +60,7 @@ Type `exit` to quit the assistant.
 ## 🛠️ Project Structure
 
 ```
-gh-copilot-sdk-playground/
+gh-copilot-sdk-playground-go/
 ├── cmd/
 │   ├── basic/           # Simple one-shot example
 │   │   └── main.go
