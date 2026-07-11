@@ -1,4 +1,4 @@
-module github.com/p2well/gh-copilot-sdk-playground
+module github.com/p2well/gh-copilot-sdk-playground-go
 
 go 1.26.5
 
